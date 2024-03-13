@@ -1,0 +1,22 @@
+name: modern-wine-quality
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: cml_run
+
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        pip install -r requirement.txt
+        python train.py
+
+        echo "model-metrics"
+        cat metrics.txt
